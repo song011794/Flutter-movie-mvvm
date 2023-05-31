@@ -21,7 +21,7 @@ TMDBMovieList _$TMDBMovieListFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$TMDBMovieList {
   int get page => throw _privateConstructorUsedError;
-  List<TMDBMovie> get result => throw _privateConstructorUsedError;
+  List<TMDBMovie> get results => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_pages')
   int get totalPages => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_results')
@@ -41,7 +41,7 @@ abstract class $TMDBMovieListCopyWith<$Res> {
   @useResult
   $Res call(
       {int page,
-      List<TMDBMovie> result,
+      List<TMDBMovie> results,
       @JsonKey(name: 'total_pages') int totalPages,
       @JsonKey(name: 'total_results') int? totalResults});
 }
@@ -60,7 +60,7 @@ class _$TMDBMovieListCopyWithImpl<$Res, $Val extends TMDBMovieList>
   @override
   $Res call({
     Object? page = null,
-    Object? result = null,
+    Object? results = null,
     Object? totalPages = null,
     Object? totalResults = freezed,
   }) {
@@ -69,9 +69,9 @@ class _$TMDBMovieListCopyWithImpl<$Res, $Val extends TMDBMovieList>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      results: null == results
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
               as List<TMDBMovie>,
       totalPages: null == totalPages
           ? _value.totalPages
@@ -95,7 +95,7 @@ abstract class _$$_TMDBMovieListCopyWith<$Res>
   @useResult
   $Res call(
       {int page,
-      List<TMDBMovie> result,
+      List<TMDBMovie> results,
       @JsonKey(name: 'total_pages') int totalPages,
       @JsonKey(name: 'total_results') int? totalResults});
 }
@@ -112,7 +112,7 @@ class __$$_TMDBMovieListCopyWithImpl<$Res>
   @override
   $Res call({
     Object? page = null,
-    Object? result = null,
+    Object? results = null,
     Object? totalPages = null,
     Object? totalResults = freezed,
   }) {
@@ -121,9 +121,9 @@ class __$$_TMDBMovieListCopyWithImpl<$Res>
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
               as int,
-      result: null == result
-          ? _value._result
-          : result // ignore: cast_nullable_to_non_nullable
+      results: null == results
+          ? _value._results
+          : results // ignore: cast_nullable_to_non_nullable
               as List<TMDBMovie>,
       totalPages: null == totalPages
           ? _value.totalPages
@@ -142,10 +142,10 @@ class __$$_TMDBMovieListCopyWithImpl<$Res>
 class _$_TMDBMovieList implements _TMDBMovieList {
   const _$_TMDBMovieList(
       {this.page = 1,
-      final List<TMDBMovie> result = const [],
+      final List<TMDBMovie> results = const [],
       @JsonKey(name: 'total_pages') this.totalPages = 1,
       @JsonKey(name: 'total_results') this.totalResults})
-      : _result = result;
+      : _results = results;
 
   factory _$_TMDBMovieList.fromJson(Map<String, dynamic> json) =>
       _$$_TMDBMovieListFromJson(json);
@@ -153,13 +153,13 @@ class _$_TMDBMovieList implements _TMDBMovieList {
   @override
   @JsonKey()
   final int page;
-  final List<TMDBMovie> _result;
+  final List<TMDBMovie> _results;
   @override
   @JsonKey()
-  List<TMDBMovie> get result {
-    if (_result is EqualUnmodifiableListView) return _result;
+  List<TMDBMovie> get results {
+    if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_result);
+    return EqualUnmodifiableListView(_results);
   }
 
   @override
@@ -171,7 +171,7 @@ class _$_TMDBMovieList implements _TMDBMovieList {
 
   @override
   String toString() {
-    return 'TMDBMovieList(page: $page, result: $result, totalPages: $totalPages, totalResults: $totalResults)';
+    return 'TMDBMovieList(page: $page, results: $results, totalPages: $totalPages, totalResults: $totalResults)';
   }
 
   @override
@@ -180,7 +180,7 @@ class _$_TMDBMovieList implements _TMDBMovieList {
         (other.runtimeType == runtimeType &&
             other is _$_TMDBMovieList &&
             (identical(other.page, page) || other.page == page) &&
-            const DeepCollectionEquality().equals(other._result, _result) &&
+            const DeepCollectionEquality().equals(other._results, _results) &&
             (identical(other.totalPages, totalPages) ||
                 other.totalPages == totalPages) &&
             (identical(other.totalResults, totalResults) ||
@@ -190,7 +190,7 @@ class _$_TMDBMovieList implements _TMDBMovieList {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, page,
-      const DeepCollectionEquality().hash(_result), totalPages, totalResults);
+      const DeepCollectionEquality().hash(_results), totalPages, totalResults);
 
   @JsonKey(ignore: true)
   @override
@@ -209,7 +209,7 @@ class _$_TMDBMovieList implements _TMDBMovieList {
 abstract class _TMDBMovieList implements TMDBMovieList {
   const factory _TMDBMovieList(
           {final int page,
-          final List<TMDBMovie> result,
+          final List<TMDBMovie> results,
           @JsonKey(name: 'total_pages') final int totalPages,
           @JsonKey(name: 'total_results') final int? totalResults}) =
       _$_TMDBMovieList;
@@ -220,7 +220,7 @@ abstract class _TMDBMovieList implements TMDBMovieList {
   @override
   int get page;
   @override
-  List<TMDBMovie> get result;
+  List<TMDBMovie> get results;
   @override
   @JsonKey(name: 'total_pages')
   int get totalPages;

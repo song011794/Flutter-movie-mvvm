@@ -10,7 +10,7 @@ part 'tmdb_movie_list.g.dart';
 class TMDBMovieList with _$TMDBMovieList {
   const factory TMDBMovieList({
     @Default(1) int page,
-    @Default([]) List<TMDBMovie> result,
+    @Default([]) List<TMDBMovie> results,
     @JsonKey(name: 'total_pages') @Default(1) int totalPages,
     @JsonKey(name: 'total_results') int? totalResults,
   }) = _TMDBMovieList;

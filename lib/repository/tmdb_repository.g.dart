@@ -22,13 +22,13 @@ class _TMDBRpository implements TMDBRpository {
 
   @override
   Future<TMDBMovieList> fetchNowPlaying(
-    dynamic language,
-    dynamic page,
+    String language,
+    int page,
   ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'language': language.toJson(),
-      r'page': page.toJson(),
+      r'language': language,
+      r'page': page,
     };
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
@@ -40,7 +40,94 @@ class _TMDBRpository implements TMDBRpository {
     )
             .compose(
               _dio.options,
-              '/nowPlaying',
+              '/now_playing',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TMDBMovieList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<TMDBMovieList> fetchPopular(
+    String language,
+    int page,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'language': language,
+      r'page': page,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TMDBMovieList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/popular',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TMDBMovieList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<TMDBMovieList> fetchTopRated(
+    String language,
+    int page,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'language': language,
+      r'page': page,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TMDBMovieList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/top_rated',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TMDBMovieList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<TMDBMovieList> fetchUpComming(
+    String language,
+    int page,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'language': language,
+      r'page': page,
+    };
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TMDBMovieList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/upcoming',
               queryParameters: queryParameters,
               data: _data,
             )

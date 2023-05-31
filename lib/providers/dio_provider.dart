@@ -11,5 +11,8 @@ Dio dio(DioRef ref) {
     "Content-Type": "application/json",
     "Authorization": "Bearer ${dotenv.get('TMDB_TOKEN')}"
   };
+
+  dio.interceptors.add(LogInterceptor());
+
   return dio;
 }

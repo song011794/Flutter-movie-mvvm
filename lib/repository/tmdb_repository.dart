@@ -15,7 +15,19 @@ TMDBRpository tmdbRepository(TmdbRepositoryRef ref) =>
 abstract class TMDBRpository {
   factory TMDBRpository(Dio dio, {String baseUrl}) = _TMDBRpository;
 
-  @GET("/nowPlaying")
+  @GET("/now_playing")
   Future<TMDBMovieList> fetchNowPlaying(
-      @Query('language') language, @Query('page') page);
+      @Query('language') String language, @Query('page') int page);
+
+  @GET("/popular")
+  Future<TMDBMovieList> fetchPopular(
+      @Query('language') String language, @Query('page') int page);
+
+  @GET("/top_rated")
+  Future<TMDBMovieList> fetchTopRated(
+      @Query('language') String language, @Query('page') int page);
+
+  @GET("/upcoming")
+  Future<TMDBMovieList> fetchUpComming(
+      @Query('language') String language, @Query('page') int page);
 }
