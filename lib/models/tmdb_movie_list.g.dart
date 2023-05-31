@@ -10,8 +10,7 @@ _$_TMDBMovieList _$$_TMDBMovieListFromJson(Map<String, dynamic> json) =>
     _$_TMDBMovieList(
       page: json['page'] as int? ?? 1,
       result: (json['result'] as List<dynamic>?)
-              ?.map(
-                  (e) => TMDBMovieListBasic.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => TMDBMovie.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
       totalPages: json['total_pages'] as int? ?? 1,

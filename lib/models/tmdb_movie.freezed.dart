@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'tmdb_movie_list_basic.dart';
+part of 'tmdb_movie.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TMDBMovieListBasic _$TMDBMovieListBasicFromJson(Map<String, dynamic> json) {
-  return _TMDBMovieListBasic.fromJson(json);
+TMDBMovie _$TMDBMovieFromJson(Map<String, dynamic> json) {
+  return _TMDBMovie.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TMDBMovieListBasic {
+mixin _$TMDBMovie {
   bool? get adult => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath => throw _privateConstructorUsedError;
@@ -45,15 +45,14 @@ mixin _$TMDBMovieListBasic {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TMDBMovieListBasicCopyWith<TMDBMovieListBasic> get copyWith =>
+  $TMDBMovieCopyWith<TMDBMovie> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TMDBMovieListBasicCopyWith<$Res> {
-  factory $TMDBMovieListBasicCopyWith(
-          TMDBMovieListBasic value, $Res Function(TMDBMovieListBasic) then) =
-      _$TMDBMovieListBasicCopyWithImpl<$Res, TMDBMovieListBasic>;
+abstract class $TMDBMovieCopyWith<$Res> {
+  factory $TMDBMovieCopyWith(TMDBMovie value, $Res Function(TMDBMovie) then) =
+      _$TMDBMovieCopyWithImpl<$Res, TMDBMovie>;
   @useResult
   $Res call(
       {bool? adult,
@@ -73,9 +72,9 @@ abstract class $TMDBMovieListBasicCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TMDBMovieListBasicCopyWithImpl<$Res, $Val extends TMDBMovieListBasic>
-    implements $TMDBMovieListBasicCopyWith<$Res> {
-  _$TMDBMovieListBasicCopyWithImpl(this._value, this._then);
+class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
+    implements $TMDBMovieCopyWith<$Res> {
+  _$TMDBMovieCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -162,11 +161,10 @@ class _$TMDBMovieListBasicCopyWithImpl<$Res, $Val extends TMDBMovieListBasic>
 }
 
 /// @nodoc
-abstract class _$$_TMDBMovieListBasicCopyWith<$Res>
-    implements $TMDBMovieListBasicCopyWith<$Res> {
-  factory _$$_TMDBMovieListBasicCopyWith(_$_TMDBMovieListBasic value,
-          $Res Function(_$_TMDBMovieListBasic) then) =
-      __$$_TMDBMovieListBasicCopyWithImpl<$Res>;
+abstract class _$$_TMDBMovieCopyWith<$Res> implements $TMDBMovieCopyWith<$Res> {
+  factory _$$_TMDBMovieCopyWith(
+          _$_TMDBMovie value, $Res Function(_$_TMDBMovie) then) =
+      __$$_TMDBMovieCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -187,11 +185,11 @@ abstract class _$$_TMDBMovieListBasicCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TMDBMovieListBasicCopyWithImpl<$Res>
-    extends _$TMDBMovieListBasicCopyWithImpl<$Res, _$_TMDBMovieListBasic>
-    implements _$$_TMDBMovieListBasicCopyWith<$Res> {
-  __$$_TMDBMovieListBasicCopyWithImpl(
-      _$_TMDBMovieListBasic _value, $Res Function(_$_TMDBMovieListBasic) _then)
+class __$$_TMDBMovieCopyWithImpl<$Res>
+    extends _$TMDBMovieCopyWithImpl<$Res, _$_TMDBMovie>
+    implements _$$_TMDBMovieCopyWith<$Res> {
+  __$$_TMDBMovieCopyWithImpl(
+      _$_TMDBMovie _value, $Res Function(_$_TMDBMovie) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -212,7 +210,7 @@ class __$$_TMDBMovieListBasicCopyWithImpl<$Res>
     Object? voteAverage = freezed,
     Object? voteCount = freezed,
   }) {
-    return _then(_$_TMDBMovieListBasic(
+    return _then(_$_TMDBMovie(
       adult: freezed == adult
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
@@ -275,8 +273,8 @@ class __$$_TMDBMovieListBasicCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TMDBMovieListBasic implements _TMDBMovieListBasic {
-  const _$_TMDBMovieListBasic(
+class _$_TMDBMovie implements _TMDBMovie {
+  const _$_TMDBMovie(
       {this.adult,
       @JsonKey(name: 'backdrop_path') this.backdropPath,
       @JsonKey(name: 'genre_ids') final List<int>? genreIds,
@@ -293,8 +291,8 @@ class _$_TMDBMovieListBasic implements _TMDBMovieListBasic {
       @JsonKey(name: 'vote_count') this.voteCount})
       : _genreIds = genreIds;
 
-  factory _$_TMDBMovieListBasic.fromJson(Map<String, dynamic> json) =>
-      _$$_TMDBMovieListBasicFromJson(json);
+  factory _$_TMDBMovie.fromJson(Map<String, dynamic> json) =>
+      _$$_TMDBMovieFromJson(json);
 
   @override
   final bool? adult;
@@ -343,14 +341,14 @@ class _$_TMDBMovieListBasic implements _TMDBMovieListBasic {
 
   @override
   String toString() {
-    return 'TMDBMovieListBasic(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'TMDBMovie(adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, id: $id, originalLanguage: $originalLanguage, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, posterPath: $posterPath, releaseDate: $releaseDate, title: $title, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TMDBMovieListBasic &&
+            other is _$_TMDBMovie &&
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
@@ -398,38 +396,36 @@ class _$_TMDBMovieListBasic implements _TMDBMovieListBasic {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TMDBMovieListBasicCopyWith<_$_TMDBMovieListBasic> get copyWith =>
-      __$$_TMDBMovieListBasicCopyWithImpl<_$_TMDBMovieListBasic>(
-          this, _$identity);
+  _$$_TMDBMovieCopyWith<_$_TMDBMovie> get copyWith =>
+      __$$_TMDBMovieCopyWithImpl<_$_TMDBMovie>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TMDBMovieListBasicToJson(
+    return _$$_TMDBMovieToJson(
       this,
     );
   }
 }
 
-abstract class _TMDBMovieListBasic implements TMDBMovieListBasic {
-  const factory _TMDBMovieListBasic(
-          {final bool? adult,
-          @JsonKey(name: 'backdrop_path') final String? backdropPath,
-          @JsonKey(name: 'genre_ids') final List<int>? genreIds,
-          final int? id,
-          @JsonKey(name: 'original_language') final String? originalLanguage,
-          @JsonKey(name: 'original_title') final String? originalTitle,
-          final String? overview,
-          final double? popularity,
-          @JsonKey(name: 'poster_path') final String? posterPath,
-          @JsonKey(name: 'release_date') final String? releaseDate,
-          final String? title,
-          final bool? video,
-          @JsonKey(name: 'vote_average') final double? voteAverage,
-          @JsonKey(name: 'vote_count') final int? voteCount}) =
-      _$_TMDBMovieListBasic;
+abstract class _TMDBMovie implements TMDBMovie {
+  const factory _TMDBMovie(
+      {final bool? adult,
+      @JsonKey(name: 'backdrop_path') final String? backdropPath,
+      @JsonKey(name: 'genre_ids') final List<int>? genreIds,
+      final int? id,
+      @JsonKey(name: 'original_language') final String? originalLanguage,
+      @JsonKey(name: 'original_title') final String? originalTitle,
+      final String? overview,
+      final double? popularity,
+      @JsonKey(name: 'poster_path') final String? posterPath,
+      @JsonKey(name: 'release_date') final String? releaseDate,
+      final String? title,
+      final bool? video,
+      @JsonKey(name: 'vote_average') final double? voteAverage,
+      @JsonKey(name: 'vote_count') final int? voteCount}) = _$_TMDBMovie;
 
-  factory _TMDBMovieListBasic.fromJson(Map<String, dynamic> json) =
-      _$_TMDBMovieListBasic.fromJson;
+  factory _TMDBMovie.fromJson(Map<String, dynamic> json) =
+      _$_TMDBMovie.fromJson;
 
   @override
   bool? get adult;
@@ -469,6 +465,6 @@ abstract class _TMDBMovieListBasic implements TMDBMovieListBasic {
   int? get voteCount;
   @override
   @JsonKey(ignore: true)
-  _$$_TMDBMovieListBasicCopyWith<_$_TMDBMovieListBasic> get copyWith =>
+  _$$_TMDBMovieCopyWith<_$_TMDBMovie> get copyWith =>
       throw _privateConstructorUsedError;
 }

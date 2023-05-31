@@ -2,12 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'tmdb_movie_list_basic.freezed.dart';
-part 'tmdb_movie_list_basic.g.dart';
+part 'tmdb_movie.freezed.dart';
+part 'tmdb_movie.g.dart';
 
 @freezed
-class TMDBMovieListBasic with _$TMDBMovieListBasic {
-  const factory TMDBMovieListBasic(
+class TMDBMovie with _$TMDBMovie {
+  const factory TMDBMovie(
       {bool? adult,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'genre_ids') List<int>? genreIds,
@@ -21,8 +21,8 @@ class TMDBMovieListBasic with _$TMDBMovieListBasic {
       String? title,
       bool? video,
       @JsonKey(name: 'vote_average') double? voteAverage,
-      @JsonKey(name: 'vote_count') int? voteCount}) = _TMDBMovieListBasic;
+      @JsonKey(name: 'vote_count') int? voteCount}) = _TMDBMovie;
 
-  factory TMDBMovieListBasic.fromJson(Map<String, Object?> json) =>
-      _$TMDBMovieListBasicFromJson(json);
+  factory TMDBMovie.fromJson(Map<String, Object?> json) =>
+      _$TMDBMovieFromJson(json);
 }

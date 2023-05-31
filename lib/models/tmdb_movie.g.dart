@@ -1,14 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tmdb_movie_list_basic.dart';
+part of 'tmdb_movie.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TMDBMovieListBasic _$$_TMDBMovieListBasicFromJson(
-        Map<String, dynamic> json) =>
-    _$_TMDBMovieListBasic(
+_$_TMDBMovie _$$_TMDBMovieFromJson(Map<String, dynamic> json) => _$_TMDBMovie(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
       genreIds:
@@ -26,8 +24,7 @@ _$_TMDBMovieListBasic _$$_TMDBMovieListBasicFromJson(
       voteCount: json['vote_count'] as int?,
     );
 
-Map<String, dynamic> _$$_TMDBMovieListBasicToJson(
-        _$_TMDBMovieListBasic instance) =>
+Map<String, dynamic> _$$_TMDBMovieToJson(_$_TMDBMovie instance) =>
     <String, dynamic>{
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
