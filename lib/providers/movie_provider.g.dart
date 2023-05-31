@@ -6,7 +6,7 @@ part of 'movie_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$movieHash() => r'6aa76336e7aa5573851f9639bbee4778d246b344';
+String _$movieHash() => r'34a5c759e58819b3e375853b6f3a3f0699d6ac46';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,10 +29,10 @@ class _SystemHash {
   }
 }
 
-abstract class _$Movie extends BuildlessAutoDisposeNotifier<NowPlayingState> {
+abstract class _$Movie extends BuildlessAutoDisposeNotifier<MovieState> {
   late final MOVIEMODE mode;
 
-  NowPlayingState build(
+  MovieState build(
     MOVIEMODE mode,
   );
 }
@@ -42,7 +42,7 @@ abstract class _$Movie extends BuildlessAutoDisposeNotifier<NowPlayingState> {
 const movieProvider = MovieFamily();
 
 /// See also [Movie].
-class MovieFamily extends Family<NowPlayingState> {
+class MovieFamily extends Family<MovieState> {
   /// See also [Movie].
   const MovieFamily();
 
@@ -80,8 +80,7 @@ class MovieFamily extends Family<NowPlayingState> {
 }
 
 /// See also [Movie].
-class MovieProvider
-    extends AutoDisposeNotifierProviderImpl<Movie, NowPlayingState> {
+class MovieProvider extends AutoDisposeNotifierProviderImpl<Movie, MovieState> {
   /// See also [Movie].
   MovieProvider(
     this.mode,
@@ -113,7 +112,7 @@ class MovieProvider
   }
 
   @override
-  NowPlayingState runNotifierBuild(
+  MovieState runNotifierBuild(
     covariant Movie notifier,
   ) {
     return notifier.build(

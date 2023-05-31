@@ -3,7 +3,7 @@ import 'package:movie_mvvm/repository/tmdb_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/tmdb_movie_list.dart';
-import '../states/now_playing_state.dart';
+import '../states/movie_state.dart';
 
 part 'movie_provider.g.dart';
 
@@ -18,11 +18,11 @@ class Movie extends _$Movie {
   late MOVIEMODE _mode;
 
   @override
-  NowPlayingState build(MOVIEMODE mode) {
+  MovieState build(MOVIEMODE mode) {
     _mode = mode;
     _tmdbRpository = ref.watch(tmdbRepositoryProvider);
     fetchNextPage();
-    return const NowPlayingState.init();
+    return const MovieState.init();
   }
 
   Future fetchNextPage() async {
@@ -31,7 +31,7 @@ class Movie extends _$Movie {
     }
     _page++;
 
-    state = NowPlayingState.loading(_movies);
+    state = MovieState.loading(_movies);
 
     try {
       TMDBMovieList tmdbMovieList = switch (_mode) {
@@ -52,12 +52,12 @@ class Movie extends _$Movie {
       _pageSize = tmdbMovieList.totalPages;
 
       if (tmdbMovieList.results.isEmpty) {
-        state = NowPlayingState.loaded(_movies);
+        state = MovieState.loaded(_movies);
       } else {
-        state = NowPlayingState.loaded(_movies..addAll(tmdbMovieList.results));
+        state = MovieState.loaded(_movies..addAll(tmdbMovieList.results));
       }
     } catch (e) {
-      state = NowPlayingState.error(e.toString());
+      state = MovieState.error(e.toString());
     }
   }
 }
