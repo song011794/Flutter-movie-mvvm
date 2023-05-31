@@ -1,0 +1,7 @@
+build/
+linux/
+macos/
+web/
+windows/
+.env
+.gitmessage.txt
