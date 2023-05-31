@@ -50,3 +50,4 @@ ios/build
 .fvm/flutter_sdk
 
 .gitmessage.txt
+.env
