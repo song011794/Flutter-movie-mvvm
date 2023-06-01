@@ -7,10 +7,10 @@ part of 'tmdb_movie.dart';
 // **************************************************************************
 
 _$_TMDBMovie _$$_TMDBMovieFromJson(Map<String, dynamic> json) => _$_TMDBMovie(
-      id: json['id'] as int?,
-      overview: json['overview'] as String?,
-      popularity: (json['popularity'] as num?)?.toDouble(),
-      title: json['title'] as String?,
+      id: json['id'] as int,
+      title: json['title'] as String,
+      popularity: (json['popularity'] as num?)?.toDouble() ?? 0,
+      overview: json['overview'] as String? ?? '',
       adult: json['adult'] as bool? ?? false,
       backdropPath: json['backdrop_path'] as String?,
       genreIds:
@@ -27,9 +27,9 @@ _$_TMDBMovie _$$_TMDBMovieFromJson(Map<String, dynamic> json) => _$_TMDBMovie(
 Map<String, dynamic> _$$_TMDBMovieToJson(_$_TMDBMovie instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'overview': instance.overview,
-      'popularity': instance.popularity,
       'title': instance.title,
+      'popularity': instance.popularity,
+      'overview': instance.overview,
       'adult': instance.adult,
       'backdrop_path': instance.backdropPath,
       'genre_ids': instance.genreIds,

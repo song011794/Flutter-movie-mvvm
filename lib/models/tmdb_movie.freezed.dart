@@ -20,10 +20,10 @@ TMDBMovie _$TMDBMovieFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TMDBMovie {
-  int? get id => throw _privateConstructorUsedError;
-  String? get overview => throw _privateConstructorUsedError;
-  double? get popularity => throw _privateConstructorUsedError;
-  String? get title => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  double get popularity => throw _privateConstructorUsedError;
+  String get overview => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath => throw _privateConstructorUsedError;
@@ -55,10 +55,10 @@ abstract class $TMDBMovieCopyWith<$Res> {
       _$TMDBMovieCopyWithImpl<$Res, TMDBMovie>;
   @useResult
   $Res call(
-      {int? id,
-      String? overview,
-      double? popularity,
-      String? title,
+      {int id,
+      String title,
+      double popularity,
+      String overview,
       bool adult,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'genre_ids') List<int>? genreIds,
@@ -84,10 +84,10 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? overview = freezed,
-    Object? popularity = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? popularity = null,
+    Object? overview = null,
     Object? adult = null,
     Object? backdropPath = freezed,
     Object? genreIds = freezed,
@@ -100,22 +100,22 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
     Object? voteCount = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      overview: freezed == overview
-          ? _value.overview
-          : overview // ignore: cast_nullable_to_non_nullable
-              as String?,
-      popularity: freezed == popularity
-          ? _value.popularity
-          : popularity // ignore: cast_nullable_to_non_nullable
-              as double?,
-      title: freezed == title
+              as int,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      popularity: null == popularity
+          ? _value.popularity
+          : popularity // ignore: cast_nullable_to_non_nullable
+              as double,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
       adult: null == adult
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
@@ -168,10 +168,10 @@ abstract class _$$_TMDBMovieCopyWith<$Res> implements $TMDBMovieCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
-      String? overview,
-      double? popularity,
-      String? title,
+      {int id,
+      String title,
+      double popularity,
+      String overview,
       bool adult,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'genre_ids') List<int>? genreIds,
@@ -195,10 +195,10 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? overview = freezed,
-    Object? popularity = freezed,
-    Object? title = freezed,
+    Object? id = null,
+    Object? title = null,
+    Object? popularity = null,
+    Object? overview = null,
     Object? adult = null,
     Object? backdropPath = freezed,
     Object? genreIds = freezed,
@@ -211,22 +211,22 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
     Object? voteCount = freezed,
   }) {
     return _then(_$_TMDBMovie(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      overview: freezed == overview
-          ? _value.overview
-          : overview // ignore: cast_nullable_to_non_nullable
-              as String?,
-      popularity: freezed == popularity
-          ? _value.popularity
-          : popularity // ignore: cast_nullable_to_non_nullable
-              as double?,
-      title: freezed == title
+              as int,
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      popularity: null == popularity
+          ? _value.popularity
+          : popularity // ignore: cast_nullable_to_non_nullable
+              as double,
+      overview: null == overview
+          ? _value.overview
+          : overview // ignore: cast_nullable_to_non_nullable
+              as String,
       adult: null == adult
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
@@ -275,10 +275,10 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_TMDBMovie implements _TMDBMovie {
   const _$_TMDBMovie(
-      {this.id,
-      this.overview,
-      this.popularity,
-      this.title,
+      {required this.id,
+      required this.title,
+      this.popularity = 0,
+      this.overview = '',
       this.adult = false,
       @JsonKey(name: 'backdrop_path') this.backdropPath,
       @JsonKey(name: 'genre_ids') final List<int>? genreIds,
@@ -295,13 +295,15 @@ class _$_TMDBMovie implements _TMDBMovie {
       _$$_TMDBMovieFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
-  final String? overview;
+  final String title;
   @override
-  final double? popularity;
+  @JsonKey()
+  final double popularity;
   @override
-  final String? title;
+  @JsonKey()
+  final String overview;
   @override
   @JsonKey()
   final bool adult;
@@ -343,7 +345,7 @@ class _$_TMDBMovie implements _TMDBMovie {
 
   @override
   String toString() {
-    return 'TMDBMovie(id: $id, overview: $overview, popularity: $popularity, title: $title, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, posterPath: $posterPath, releaseDate: $releaseDate, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'TMDBMovie(id: $id, title: $title, popularity: $popularity, overview: $overview, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, posterPath: $posterPath, releaseDate: $releaseDate, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
   }
 
   @override
@@ -352,11 +354,11 @@ class _$_TMDBMovie implements _TMDBMovie {
         (other.runtimeType == runtimeType &&
             other is _$_TMDBMovie &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.overview, overview) ||
-                other.overview == overview) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.popularity, popularity) ||
                 other.popularity == popularity) &&
-            (identical(other.title, title) || other.title == title) &&
+            (identical(other.overview, overview) ||
+                other.overview == overview) &&
             (identical(other.adult, adult) || other.adult == adult) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
@@ -381,9 +383,9 @@ class _$_TMDBMovie implements _TMDBMovie {
   int get hashCode => Object.hash(
       runtimeType,
       id,
-      overview,
-      popularity,
       title,
+      popularity,
+      overview,
       adult,
       backdropPath,
       const DeepCollectionEquality().hash(_genreIds),
@@ -411,10 +413,10 @@ class _$_TMDBMovie implements _TMDBMovie {
 
 abstract class _TMDBMovie implements TMDBMovie {
   const factory _TMDBMovie(
-      {final int? id,
-      final String? overview,
-      final double? popularity,
-      final String? title,
+      {required final int id,
+      required final String title,
+      final double popularity,
+      final String overview,
       final bool adult,
       @JsonKey(name: 'backdrop_path') final String? backdropPath,
       @JsonKey(name: 'genre_ids') final List<int>? genreIds,
@@ -430,13 +432,13 @@ abstract class _TMDBMovie implements TMDBMovie {
       _$_TMDBMovie.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
-  String? get overview;
+  String get title;
   @override
-  double? get popularity;
+  double get popularity;
   @override
-  String? get title;
+  String get overview;
   @override
   bool get adult;
   @override

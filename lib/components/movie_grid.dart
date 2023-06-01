@@ -14,9 +14,12 @@ class MovieGrid extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _MovieGridState();
 }
 
-class _MovieGridState extends ConsumerState<MovieGrid> {
+class _MovieGridState extends ConsumerState<MovieGrid>
+    with TickerProviderStateMixin {
   final ScrollController scrollController = ScrollController();
   bool loading = false;
+  int _seletedItem = -1;
+  List<double> _opacityList = [];
 
   @override
   void initState() {
@@ -46,15 +49,59 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemBuilder: (context, index) {
-          return widget.movieList.elementAt(index).posterPath != null
-              ? GridTile(
+          _opacityList.add(1);
+
+          return GestureDetector(
+            onTap: () => setState(() {
+              _opacityList[index] = _opacityList[index] < 1 ? 1 : 0.4;
+            }),
+            child: GridTile(
+                child: Stack(
+              fit: StackFit.expand,
+              children: [
+                AnimatedOpacity(
+                  opacity: _opacityList.elementAt(index),
+                  duration: const Duration(milliseconds: 500),
                   child: Card(
                       child: Image.network(
                     '${dotenv.get('TMDB_POSTER')}${widget.movieList.elementAt(index).posterPath}',
                     fit: BoxFit.fill,
                   )),
-                )
-              : Container();
+                ),
+                AnimatedOpacity(
+                  opacity: _opacityList.elementAt(index) == 1 ? 0 : 1,
+                  duration: const Duration(milliseconds: 500),
+                  child: Card(
+                      color: Colors.transparent,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                              child: Center(
+                            child:
+                                Text(widget.movieList.elementAt(index).title),
+                          )),
+                          if (widget.movieList
+                              .elementAt(index)
+                              .overview
+                              .isNotEmpty)
+                            Expanded(
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.only(left: 8, right: 8),
+                                child: Text(
+                                  widget.movieList.elementAt(index).overview,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            )
+                        ],
+                      )),
+                ),
+              ],
+            )),
+          );
         });
   }
 }

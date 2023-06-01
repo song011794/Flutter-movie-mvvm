@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/bottom_navigation.dart';
 import '../providers/movie_provider.dart';
@@ -31,24 +32,25 @@ class _HomePageState extends State<HomePage> {
           bottomNavigationBar: BottomNavigationBar(
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
+                icon: FaIcon(FontAwesomeIcons.film),
+                label: 'Now Playing',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.business),
-                label: 'Business',
+                icon: FaIcon(FontAwesomeIcons.fire),
+                label: 'Popular',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.school),
-                label: 'School',
+                icon: FaIcon(FontAwesomeIcons.star),
+                label: 'Top Rated',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.school),
-                label: 'School',
+                icon: FaIcon(FontAwesomeIcons.stopwatch),
+                label: 'Up Comming',
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.amber[800],
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.grey,
             onTap: _onItemTapped,
           ),
         ),

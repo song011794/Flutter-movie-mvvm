@@ -15,7 +15,7 @@ class NavigationWidget extends ConsumerWidget {
     final state = ref.watch(movieProvider(_movieMode));
 
     return state.when(
-        init: () => const CircularProgressIndicator(),
+        init: () => const Center(child: CircularProgressIndicator()),
         loading: (List<TMDBMovie> tmdbMovieList) =>
             MovieGrid(tmdbMovieList, _movieMode),
         loaded: (List<TMDBMovie> tmdbMovieList) =>

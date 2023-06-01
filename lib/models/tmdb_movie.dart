@@ -8,10 +8,10 @@ part 'tmdb_movie.g.dart';
 @freezed
 class TMDBMovie with _$TMDBMovie {
   const factory TMDBMovie(
-      {int? id,
-      String? overview,
-      double? popularity,
-      String? title,
+      {required int id,
+      required String title,
+      @Default(0) double popularity,
+      @Default('') String overview,
       @Default(false) bool adult,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'genre_ids') List<int>? genreIds,
