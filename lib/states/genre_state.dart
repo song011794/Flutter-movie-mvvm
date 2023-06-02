@@ -5,9 +5,9 @@ part 'genre_state.freezed.dart';
 
 @freezed
 class GenreState with _$GenreState {
-  const factory GenreState.init() = _GenreStateInit;
-  const factory GenreState.loading() = _GenreStateLoading;
+  const factory GenreState.init() = GenreStateInit;
+  const factory GenreState.loading() = GenreStateLoading;
   const factory GenreState.loaded(List<TMDBGenre> tmdbGenreList) =
-      _GenreStateLoaded;
-  const factory GenreState.error(String e) = _GenreStateError;
+      GenreStateLoaded;
+  const factory GenreState.error(String e) = GenreStateError;
 }

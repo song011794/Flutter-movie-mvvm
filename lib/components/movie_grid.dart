@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,12 +16,11 @@ class MovieGrid extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _MovieGridState();
 }
 
-class _MovieGridState extends ConsumerState<MovieGrid>
-    with TickerProviderStateMixin {
+class _MovieGridState extends ConsumerState<MovieGrid> {
   final ScrollController scrollController = ScrollController();
+
+  final List<double> _opacityList = [];
   bool loading = false;
-  int _seletedItem = -1;
-  List<double> _opacityList = [];
 
   @override
   void initState() {
@@ -32,6 +33,88 @@ class _MovieGridState extends ConsumerState<MovieGrid>
       }
     });
     super.initState();
+  }
+
+  Widget _moviePoster(int index) => AnimatedOpacity(
+        opacity: _opacityList.elementAt(index),
+        duration: const Duration(milliseconds: 500),
+        child: Card(
+            child: Image.network(
+          '${dotenv.get('TMDB_POSTER')}${widget.movieList.elementAt(index).posterPath}',
+          fit: BoxFit.fill,
+        )),
+      );
+
+  Widget _movieDetail(int index) {
+    return AnimatedOpacity(
+      opacity: _opacityList.elementAt(index) == 1 ? 0 : 1,
+      duration: const Duration(milliseconds: 500),
+      child: Card(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // 제목
+                Expanded(
+                    // flex: 2,
+                    child: Center(
+                  child: Text(
+                    widget.movieList.elementAt(index).title,
+                    maxLines: 2,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                )),
+                // 장르
+                Expanded(
+                  child: Wrap(
+                      spacing: 5,
+                      runSpacing: 5,
+                      alignment: WrapAlignment.center,
+                      children: [
+                        for (int i = 0;
+                            i <
+                                widget.movieList
+                                    .elementAt(index)
+                                    .genreStrings
+                                    .length;
+                            i++)
+                          Container(
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                color: widget.movieList
+                                    .elementAt(index)
+                                    .genreColors
+                                    .elementAt(i),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Text(widget.movieList
+                                .elementAt(index)
+                                .genreStrings
+                                .elementAt(i)),
+                          )
+                      ]),
+                ),
+                // 영화 설명
+                if (widget.movieList.elementAt(index).overview.isNotEmpty)
+                  Expanded(
+                    // flex: 2,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                      child: Text(
+                        widget.movieList.elementAt(index).overview,
+                        maxLines: 3,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w400),
+                      ),
+                    ),
+                  )
+              ],
+            ),
+          )),
+    );
   }
 
   @override
@@ -58,48 +141,7 @@ class _MovieGridState extends ConsumerState<MovieGrid>
             child: GridTile(
                 child: Stack(
               fit: StackFit.expand,
-              children: [
-                AnimatedOpacity(
-                  opacity: _opacityList.elementAt(index),
-                  duration: const Duration(milliseconds: 500),
-                  child: Card(
-                      child: Image.network(
-                    '${dotenv.get('TMDB_POSTER')}${widget.movieList.elementAt(index).posterPath}',
-                    fit: BoxFit.fill,
-                  )),
-                ),
-                AnimatedOpacity(
-                  opacity: _opacityList.elementAt(index) == 1 ? 0 : 1,
-                  duration: const Duration(milliseconds: 500),
-                  child: Card(
-                      color: Colors.transparent,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Center(
-                            child:
-                                Text(widget.movieList.elementAt(index).title),
-                          )),
-                          if (widget.movieList
-                              .elementAt(index)
-                              .overview
-                              .isNotEmpty)
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 8, right: 8),
-                                child: Text(
-                                  widget.movieList.elementAt(index).overview,
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            )
-                        ],
-                      )),
-                ),
-              ],
+              children: [_moviePoster(index), _movieDetail(index)],
             )),
           );
         });

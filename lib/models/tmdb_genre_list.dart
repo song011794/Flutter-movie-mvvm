@@ -6,7 +6,7 @@ part 'tmdb_genre_list.g.dart';
 
 @freezed
 class TMDBGenreList with _$TMDBGenreList {
-  const factory TMDBGenreList({@Default([]) List<TMDBGenre> genres}) =
+  const factory TMDBGenreList({@Default([])  List<TMDBGenre> genres}) =
       _TMDBGenreList;
 
   factory TMDBGenreList.fromJson(Map<String, Object?> json) =>

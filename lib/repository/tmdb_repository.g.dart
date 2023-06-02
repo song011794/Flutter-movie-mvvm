@@ -13,7 +13,7 @@ class _TMDBRpository implements TMDBRpository {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.themoviedb.org/3/movie/';
+    baseUrl ??= 'https://api.themoviedb.org/3';
   }
 
   final Dio _dio;
@@ -40,7 +40,7 @@ class _TMDBRpository implements TMDBRpository {
     )
             .compose(
               _dio.options,
-              '/now_playing',
+              '/movie/now_playing',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -69,7 +69,7 @@ class _TMDBRpository implements TMDBRpository {
     )
             .compose(
               _dio.options,
-              '/popular',
+              '/movie/popular',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -98,7 +98,7 @@ class _TMDBRpository implements TMDBRpository {
     )
             .compose(
               _dio.options,
-              '/top_rated',
+              '/movie/top_rated',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -127,12 +127,35 @@ class _TMDBRpository implements TMDBRpository {
     )
             .compose(
               _dio.options,
-              '/upcoming',
+              '/movie/upcoming',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = TMDBMovieList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<TMDBGenreList> fetchMovieGenre(String language) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'language': language};
+    final _headers = <String, dynamic>{};
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TMDBGenreList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/genre/movie/list',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = TMDBGenreList.fromJson(_result.data!);
     return value;
   }
 

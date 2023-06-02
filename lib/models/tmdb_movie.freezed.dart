@@ -25,10 +25,12 @@ mixin _$TMDBMovie {
   double get popularity => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
+  bool get video => throw _privateConstructorUsedError;
+  List<String> get genreStrings => throw _privateConstructorUsedError;
+  @JsonKey(name: 'genre_ids')
+  List<int> get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath => throw _privateConstructorUsedError;
-  @JsonKey(name: 'genre_ids')
-  List<int>? get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_language')
   String? get originalLanguage => throw _privateConstructorUsedError;
   @JsonKey(name: 'original_title')
@@ -37,11 +39,12 @@ mixin _$TMDBMovie {
   String? get posterPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
   String? get releaseDate => throw _privateConstructorUsedError;
-  bool get video => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_average')
   double? get voteAverage => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_count')
   int? get voteCount => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false)
+  List<Color> get genreColors => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -60,15 +63,17 @@ abstract class $TMDBMovieCopyWith<$Res> {
       double popularity,
       String overview,
       bool adult,
+      bool video,
+      List<String> genreStrings,
+      @JsonKey(name: 'genre_ids') List<int> genreIds,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
-      @JsonKey(name: 'genre_ids') List<int>? genreIds,
       @JsonKey(name: 'original_language') String? originalLanguage,
       @JsonKey(name: 'original_title') String? originalTitle,
       @JsonKey(name: 'poster_path') String? posterPath,
       @JsonKey(name: 'release_date') String? releaseDate,
-      bool video,
       @JsonKey(name: 'vote_average') double? voteAverage,
-      @JsonKey(name: 'vote_count') int? voteCount});
+      @JsonKey(name: 'vote_count') int? voteCount,
+      @JsonKey(includeFromJson: false) List<Color> genreColors});
 }
 
 /// @nodoc
@@ -89,15 +94,17 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
     Object? popularity = null,
     Object? overview = null,
     Object? adult = null,
+    Object? video = null,
+    Object? genreStrings = null,
+    Object? genreIds = null,
     Object? backdropPath = freezed,
-    Object? genreIds = freezed,
     Object? originalLanguage = freezed,
     Object? originalTitle = freezed,
     Object? posterPath = freezed,
     Object? releaseDate = freezed,
-    Object? video = null,
     Object? voteAverage = freezed,
     Object? voteCount = freezed,
+    Object? genreColors = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -120,14 +127,22 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
               as bool,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as bool,
+      genreStrings: null == genreStrings
+          ? _value.genreStrings
+          : genreStrings // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      genreIds: null == genreIds
+          ? _value.genreIds
+          : genreIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       backdropPath: freezed == backdropPath
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      genreIds: freezed == genreIds
-          ? _value.genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
       originalLanguage: freezed == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -144,10 +159,6 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as bool,
       voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -156,6 +167,10 @@ class _$TMDBMovieCopyWithImpl<$Res, $Val extends TMDBMovie>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      genreColors: null == genreColors
+          ? _value.genreColors
+          : genreColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
     ) as $Val);
   }
 }
@@ -173,15 +188,17 @@ abstract class _$$_TMDBMovieCopyWith<$Res> implements $TMDBMovieCopyWith<$Res> {
       double popularity,
       String overview,
       bool adult,
+      bool video,
+      List<String> genreStrings,
+      @JsonKey(name: 'genre_ids') List<int> genreIds,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
-      @JsonKey(name: 'genre_ids') List<int>? genreIds,
       @JsonKey(name: 'original_language') String? originalLanguage,
       @JsonKey(name: 'original_title') String? originalTitle,
       @JsonKey(name: 'poster_path') String? posterPath,
       @JsonKey(name: 'release_date') String? releaseDate,
-      bool video,
       @JsonKey(name: 'vote_average') double? voteAverage,
-      @JsonKey(name: 'vote_count') int? voteCount});
+      @JsonKey(name: 'vote_count') int? voteCount,
+      @JsonKey(includeFromJson: false) List<Color> genreColors});
 }
 
 /// @nodoc
@@ -200,15 +217,17 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
     Object? popularity = null,
     Object? overview = null,
     Object? adult = null,
+    Object? video = null,
+    Object? genreStrings = null,
+    Object? genreIds = null,
     Object? backdropPath = freezed,
-    Object? genreIds = freezed,
     Object? originalLanguage = freezed,
     Object? originalTitle = freezed,
     Object? posterPath = freezed,
     Object? releaseDate = freezed,
-    Object? video = null,
     Object? voteAverage = freezed,
     Object? voteCount = freezed,
+    Object? genreColors = null,
   }) {
     return _then(_$_TMDBMovie(
       id: null == id
@@ -231,14 +250,22 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
               as bool,
+      video: null == video
+          ? _value.video
+          : video // ignore: cast_nullable_to_non_nullable
+              as bool,
+      genreStrings: null == genreStrings
+          ? _value._genreStrings
+          : genreStrings // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      genreIds: null == genreIds
+          ? _value._genreIds
+          : genreIds // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       backdropPath: freezed == backdropPath
           ? _value.backdropPath
           : backdropPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      genreIds: freezed == genreIds
-          ? _value._genreIds
-          : genreIds // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
       originalLanguage: freezed == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
@@ -255,10 +282,6 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as bool,
       voteAverage: freezed == voteAverage
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -267,6 +290,10 @@ class __$$_TMDBMovieCopyWithImpl<$Res>
           ? _value.voteCount
           : voteCount // ignore: cast_nullable_to_non_nullable
               as int?,
+      genreColors: null == genreColors
+          ? _value._genreColors
+          : genreColors // ignore: cast_nullable_to_non_nullable
+              as List<Color>,
     ));
   }
 }
@@ -280,16 +307,29 @@ class _$_TMDBMovie implements _TMDBMovie {
       this.popularity = 0,
       this.overview = '',
       this.adult = false,
-      @JsonKey(name: 'backdrop_path') this.backdropPath,
-      @JsonKey(name: 'genre_ids') final List<int>? genreIds,
-      @JsonKey(name: 'original_language') this.originalLanguage,
-      @JsonKey(name: 'original_title') this.originalTitle,
-      @JsonKey(name: 'poster_path') this.posterPath,
-      @JsonKey(name: 'release_date') this.releaseDate,
       this.video = false,
-      @JsonKey(name: 'vote_average') this.voteAverage,
-      @JsonKey(name: 'vote_count') this.voteCount})
-      : _genreIds = genreIds;
+      final List<String> genreStrings = const [],
+      @JsonKey(name: 'genre_ids')
+          final List<int> genreIds = const [],
+      @JsonKey(name: 'backdrop_path')
+          this.backdropPath,
+      @JsonKey(name: 'original_language')
+          this.originalLanguage,
+      @JsonKey(name: 'original_title')
+          this.originalTitle,
+      @JsonKey(name: 'poster_path')
+          this.posterPath,
+      @JsonKey(name: 'release_date')
+          this.releaseDate,
+      @JsonKey(name: 'vote_average')
+          this.voteAverage,
+      @JsonKey(name: 'vote_count')
+          this.voteCount,
+      @JsonKey(includeFromJson: false)
+          final List<Color> genreColors = const []})
+      : _genreStrings = genreStrings,
+        _genreIds = genreIds,
+        _genreColors = genreColors;
 
   factory _$_TMDBMovie.fromJson(Map<String, dynamic> json) =>
       _$$_TMDBMovieFromJson(json);
@@ -308,19 +348,29 @@ class _$_TMDBMovie implements _TMDBMovie {
   @JsonKey()
   final bool adult;
   @override
-  @JsonKey(name: 'backdrop_path')
-  final String? backdropPath;
-  final List<int>? _genreIds;
+  @JsonKey()
+  final bool video;
+  final List<String> _genreStrings;
   @override
-  @JsonKey(name: 'genre_ids')
-  List<int>? get genreIds {
-    final value = _genreIds;
-    if (value == null) return null;
-    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
+  @JsonKey()
+  List<String> get genreStrings {
+    if (_genreStrings is EqualUnmodifiableListView) return _genreStrings;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
+    return EqualUnmodifiableListView(_genreStrings);
   }
 
+  final List<int> _genreIds;
+  @override
+  @JsonKey(name: 'genre_ids')
+  List<int> get genreIds {
+    if (_genreIds is EqualUnmodifiableListView) return _genreIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genreIds);
+  }
+
+  @override
+  @JsonKey(name: 'backdrop_path')
+  final String? backdropPath;
   @override
   @JsonKey(name: 'original_language')
   final String? originalLanguage;
@@ -334,18 +384,23 @@ class _$_TMDBMovie implements _TMDBMovie {
   @JsonKey(name: 'release_date')
   final String? releaseDate;
   @override
-  @JsonKey()
-  final bool video;
-  @override
   @JsonKey(name: 'vote_average')
   final double? voteAverage;
   @override
   @JsonKey(name: 'vote_count')
   final int? voteCount;
+  final List<Color> _genreColors;
+  @override
+  @JsonKey(includeFromJson: false)
+  List<Color> get genreColors {
+    if (_genreColors is EqualUnmodifiableListView) return _genreColors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genreColors);
+  }
 
   @override
   String toString() {
-    return 'TMDBMovie(id: $id, title: $title, popularity: $popularity, overview: $overview, adult: $adult, backdropPath: $backdropPath, genreIds: $genreIds, originalLanguage: $originalLanguage, originalTitle: $originalTitle, posterPath: $posterPath, releaseDate: $releaseDate, video: $video, voteAverage: $voteAverage, voteCount: $voteCount)';
+    return 'TMDBMovie(id: $id, title: $title, popularity: $popularity, overview: $overview, adult: $adult, video: $video, genreStrings: $genreStrings, genreIds: $genreIds, backdropPath: $backdropPath, originalLanguage: $originalLanguage, originalTitle: $originalTitle, posterPath: $posterPath, releaseDate: $releaseDate, voteAverage: $voteAverage, voteCount: $voteCount, genreColors: $genreColors)';
   }
 
   @override
@@ -360,9 +415,12 @@ class _$_TMDBMovie implements _TMDBMovie {
             (identical(other.overview, overview) ||
                 other.overview == overview) &&
             (identical(other.adult, adult) || other.adult == adult) &&
+            (identical(other.video, video) || other.video == video) &&
+            const DeepCollectionEquality()
+                .equals(other._genreStrings, _genreStrings) &&
+            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
             (identical(other.backdropPath, backdropPath) ||
                 other.backdropPath == backdropPath) &&
-            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
             (identical(other.originalLanguage, originalLanguage) ||
                 other.originalLanguage == originalLanguage) &&
             (identical(other.originalTitle, originalTitle) ||
@@ -371,11 +429,12 @@ class _$_TMDBMovie implements _TMDBMovie {
                 other.posterPath == posterPath) &&
             (identical(other.releaseDate, releaseDate) ||
                 other.releaseDate == releaseDate) &&
-            (identical(other.video, video) || other.video == video) &&
             (identical(other.voteAverage, voteAverage) ||
                 other.voteAverage == voteAverage) &&
             (identical(other.voteCount, voteCount) ||
-                other.voteCount == voteCount));
+                other.voteCount == voteCount) &&
+            const DeepCollectionEquality()
+                .equals(other._genreColors, _genreColors));
   }
 
   @JsonKey(ignore: true)
@@ -387,15 +446,17 @@ class _$_TMDBMovie implements _TMDBMovie {
       popularity,
       overview,
       adult,
-      backdropPath,
+      video,
+      const DeepCollectionEquality().hash(_genreStrings),
       const DeepCollectionEquality().hash(_genreIds),
+      backdropPath,
       originalLanguage,
       originalTitle,
       posterPath,
       releaseDate,
-      video,
       voteAverage,
-      voteCount);
+      voteCount,
+      const DeepCollectionEquality().hash(_genreColors));
 
   @JsonKey(ignore: true)
   @override
@@ -413,20 +474,23 @@ class _$_TMDBMovie implements _TMDBMovie {
 
 abstract class _TMDBMovie implements TMDBMovie {
   const factory _TMDBMovie(
-      {required final int id,
-      required final String title,
-      final double popularity,
-      final String overview,
-      final bool adult,
-      @JsonKey(name: 'backdrop_path') final String? backdropPath,
-      @JsonKey(name: 'genre_ids') final List<int>? genreIds,
-      @JsonKey(name: 'original_language') final String? originalLanguage,
-      @JsonKey(name: 'original_title') final String? originalTitle,
-      @JsonKey(name: 'poster_path') final String? posterPath,
-      @JsonKey(name: 'release_date') final String? releaseDate,
-      final bool video,
-      @JsonKey(name: 'vote_average') final double? voteAverage,
-      @JsonKey(name: 'vote_count') final int? voteCount}) = _$_TMDBMovie;
+          {required final int id,
+          required final String title,
+          final double popularity,
+          final String overview,
+          final bool adult,
+          final bool video,
+          final List<String> genreStrings,
+          @JsonKey(name: 'genre_ids') final List<int> genreIds,
+          @JsonKey(name: 'backdrop_path') final String? backdropPath,
+          @JsonKey(name: 'original_language') final String? originalLanguage,
+          @JsonKey(name: 'original_title') final String? originalTitle,
+          @JsonKey(name: 'poster_path') final String? posterPath,
+          @JsonKey(name: 'release_date') final String? releaseDate,
+          @JsonKey(name: 'vote_average') final double? voteAverage,
+          @JsonKey(name: 'vote_count') final int? voteCount,
+          @JsonKey(includeFromJson: false) final List<Color> genreColors}) =
+      _$_TMDBMovie;
 
   factory _TMDBMovie.fromJson(Map<String, dynamic> json) =
       _$_TMDBMovie.fromJson;
@@ -442,11 +506,15 @@ abstract class _TMDBMovie implements TMDBMovie {
   @override
   bool get adult;
   @override
-  @JsonKey(name: 'backdrop_path')
-  String? get backdropPath;
+  bool get video;
+  @override
+  List<String> get genreStrings;
   @override
   @JsonKey(name: 'genre_ids')
-  List<int>? get genreIds;
+  List<int> get genreIds;
+  @override
+  @JsonKey(name: 'backdrop_path')
+  String? get backdropPath;
   @override
   @JsonKey(name: 'original_language')
   String? get originalLanguage;
@@ -460,13 +528,14 @@ abstract class _TMDBMovie implements TMDBMovie {
   @JsonKey(name: 'release_date')
   String? get releaseDate;
   @override
-  bool get video;
-  @override
   @JsonKey(name: 'vote_average')
   double? get voteAverage;
   @override
   @JsonKey(name: 'vote_count')
   int? get voteCount;
+  @override
+  @JsonKey(includeFromJson: false)
+  List<Color> get genreColors;
   @override
   @JsonKey(ignore: true)
   _$$_TMDBMovieCopyWith<_$_TMDBMovie> get copyWith =>

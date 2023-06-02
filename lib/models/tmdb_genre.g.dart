@@ -7,8 +7,8 @@ part of 'tmdb_genre.dart';
 // **************************************************************************
 
 _$_TMDBGenre _$$_TMDBGenreFromJson(Map<String, dynamic> json) => _$_TMDBGenre(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
+      id: json['id'] as int,
+      name: json['name'] as String,
     );
 
 Map<String, dynamic> _$$_TMDBGenreToJson(_$_TMDBGenre instance) =>

@@ -43,26 +43,26 @@ mixin _$GenreState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GenreStateInit value) init,
-    required TResult Function(_GenreStateLoading value) loading,
-    required TResult Function(_GenreStateLoaded value) loaded,
-    required TResult Function(_GenreStateError value) error,
+    required TResult Function(GenreStateInit value) init,
+    required TResult Function(GenreStateLoading value) loading,
+    required TResult Function(GenreStateLoaded value) loaded,
+    required TResult Function(GenreStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GenreStateInit value)? init,
-    TResult? Function(_GenreStateLoading value)? loading,
-    TResult? Function(_GenreStateLoaded value)? loaded,
-    TResult? Function(_GenreStateError value)? error,
+    TResult? Function(GenreStateInit value)? init,
+    TResult? Function(GenreStateLoading value)? loading,
+    TResult? Function(GenreStateLoaded value)? loaded,
+    TResult? Function(GenreStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GenreStateInit value)? init,
-    TResult Function(_GenreStateLoading value)? loading,
-    TResult Function(_GenreStateLoaded value)? loaded,
-    TResult Function(_GenreStateError value)? error,
+    TResult Function(GenreStateInit value)? init,
+    TResult Function(GenreStateLoading value)? loading,
+    TResult Function(GenreStateLoaded value)? loaded,
+    TResult Function(GenreStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,25 +87,25 @@ class _$GenreStateCopyWithImpl<$Res, $Val extends GenreState>
 }
 
 /// @nodoc
-abstract class _$$_GenreStateInitCopyWith<$Res> {
-  factory _$$_GenreStateInitCopyWith(
-          _$_GenreStateInit value, $Res Function(_$_GenreStateInit) then) =
-      __$$_GenreStateInitCopyWithImpl<$Res>;
+abstract class _$$GenreStateInitCopyWith<$Res> {
+  factory _$$GenreStateInitCopyWith(
+          _$GenreStateInit value, $Res Function(_$GenreStateInit) then) =
+      __$$GenreStateInitCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GenreStateInitCopyWithImpl<$Res>
-    extends _$GenreStateCopyWithImpl<$Res, _$_GenreStateInit>
-    implements _$$_GenreStateInitCopyWith<$Res> {
-  __$$_GenreStateInitCopyWithImpl(
-      _$_GenreStateInit _value, $Res Function(_$_GenreStateInit) _then)
+class __$$GenreStateInitCopyWithImpl<$Res>
+    extends _$GenreStateCopyWithImpl<$Res, _$GenreStateInit>
+    implements _$$GenreStateInitCopyWith<$Res> {
+  __$$GenreStateInitCopyWithImpl(
+      _$GenreStateInit _value, $Res Function(_$GenreStateInit) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GenreStateInit implements _GenreStateInit {
-  const _$_GenreStateInit();
+class _$GenreStateInit implements GenreStateInit {
+  const _$GenreStateInit();
 
   @override
   String toString() {
@@ -115,7 +115,7 @@ class _$_GenreStateInit implements _GenreStateInit {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GenreStateInit);
+        (other.runtimeType == runtimeType && other is _$GenreStateInit);
   }
 
   @override
@@ -161,10 +161,10 @@ class _$_GenreStateInit implements _GenreStateInit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GenreStateInit value) init,
-    required TResult Function(_GenreStateLoading value) loading,
-    required TResult Function(_GenreStateLoaded value) loaded,
-    required TResult Function(_GenreStateError value) error,
+    required TResult Function(GenreStateInit value) init,
+    required TResult Function(GenreStateLoading value) loading,
+    required TResult Function(GenreStateLoaded value) loaded,
+    required TResult Function(GenreStateError value) error,
   }) {
     return init(this);
   }
@@ -172,10 +172,10 @@ class _$_GenreStateInit implements _GenreStateInit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GenreStateInit value)? init,
-    TResult? Function(_GenreStateLoading value)? loading,
-    TResult? Function(_GenreStateLoaded value)? loaded,
-    TResult? Function(_GenreStateError value)? error,
+    TResult? Function(GenreStateInit value)? init,
+    TResult? Function(GenreStateLoading value)? loading,
+    TResult? Function(GenreStateLoaded value)? loaded,
+    TResult? Function(GenreStateError value)? error,
   }) {
     return init?.call(this);
   }
@@ -183,10 +183,10 @@ class _$_GenreStateInit implements _GenreStateInit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GenreStateInit value)? init,
-    TResult Function(_GenreStateLoading value)? loading,
-    TResult Function(_GenreStateLoaded value)? loaded,
-    TResult Function(_GenreStateError value)? error,
+    TResult Function(GenreStateInit value)? init,
+    TResult Function(GenreStateLoading value)? loading,
+    TResult Function(GenreStateLoaded value)? loaded,
+    TResult Function(GenreStateError value)? error,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -196,30 +196,30 @@ class _$_GenreStateInit implements _GenreStateInit {
   }
 }
 
-abstract class _GenreStateInit implements GenreState {
-  const factory _GenreStateInit() = _$_GenreStateInit;
+abstract class GenreStateInit implements GenreState {
+  const factory GenreStateInit() = _$GenreStateInit;
 }
 
 /// @nodoc
-abstract class _$$_GenreStateLoadingCopyWith<$Res> {
-  factory _$$_GenreStateLoadingCopyWith(_$_GenreStateLoading value,
-          $Res Function(_$_GenreStateLoading) then) =
-      __$$_GenreStateLoadingCopyWithImpl<$Res>;
+abstract class _$$GenreStateLoadingCopyWith<$Res> {
+  factory _$$GenreStateLoadingCopyWith(
+          _$GenreStateLoading value, $Res Function(_$GenreStateLoading) then) =
+      __$$GenreStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_GenreStateLoadingCopyWithImpl<$Res>
-    extends _$GenreStateCopyWithImpl<$Res, _$_GenreStateLoading>
-    implements _$$_GenreStateLoadingCopyWith<$Res> {
-  __$$_GenreStateLoadingCopyWithImpl(
-      _$_GenreStateLoading _value, $Res Function(_$_GenreStateLoading) _then)
+class __$$GenreStateLoadingCopyWithImpl<$Res>
+    extends _$GenreStateCopyWithImpl<$Res, _$GenreStateLoading>
+    implements _$$GenreStateLoadingCopyWith<$Res> {
+  __$$GenreStateLoadingCopyWithImpl(
+      _$GenreStateLoading _value, $Res Function(_$GenreStateLoading) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_GenreStateLoading implements _GenreStateLoading {
-  const _$_GenreStateLoading();
+class _$GenreStateLoading implements GenreStateLoading {
+  const _$GenreStateLoading();
 
   @override
   String toString() {
@@ -229,7 +229,7 @@ class _$_GenreStateLoading implements _GenreStateLoading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_GenreStateLoading);
+        (other.runtimeType == runtimeType && other is _$GenreStateLoading);
   }
 
   @override
@@ -275,10 +275,10 @@ class _$_GenreStateLoading implements _GenreStateLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GenreStateInit value) init,
-    required TResult Function(_GenreStateLoading value) loading,
-    required TResult Function(_GenreStateLoaded value) loaded,
-    required TResult Function(_GenreStateError value) error,
+    required TResult Function(GenreStateInit value) init,
+    required TResult Function(GenreStateLoading value) loading,
+    required TResult Function(GenreStateLoaded value) loaded,
+    required TResult Function(GenreStateError value) error,
   }) {
     return loading(this);
   }
@@ -286,10 +286,10 @@ class _$_GenreStateLoading implements _GenreStateLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GenreStateInit value)? init,
-    TResult? Function(_GenreStateLoading value)? loading,
-    TResult? Function(_GenreStateLoaded value)? loaded,
-    TResult? Function(_GenreStateError value)? error,
+    TResult? Function(GenreStateInit value)? init,
+    TResult? Function(GenreStateLoading value)? loading,
+    TResult? Function(GenreStateLoaded value)? loaded,
+    TResult? Function(GenreStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -297,10 +297,10 @@ class _$_GenreStateLoading implements _GenreStateLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GenreStateInit value)? init,
-    TResult Function(_GenreStateLoading value)? loading,
-    TResult Function(_GenreStateLoaded value)? loaded,
-    TResult Function(_GenreStateError value)? error,
+    TResult Function(GenreStateInit value)? init,
+    TResult Function(GenreStateLoading value)? loading,
+    TResult Function(GenreStateLoaded value)? loaded,
+    TResult Function(GenreStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -310,25 +310,25 @@ class _$_GenreStateLoading implements _GenreStateLoading {
   }
 }
 
-abstract class _GenreStateLoading implements GenreState {
-  const factory _GenreStateLoading() = _$_GenreStateLoading;
+abstract class GenreStateLoading implements GenreState {
+  const factory GenreStateLoading() = _$GenreStateLoading;
 }
 
 /// @nodoc
-abstract class _$$_GenreStateLoadedCopyWith<$Res> {
-  factory _$$_GenreStateLoadedCopyWith(
-          _$_GenreStateLoaded value, $Res Function(_$_GenreStateLoaded) then) =
-      __$$_GenreStateLoadedCopyWithImpl<$Res>;
+abstract class _$$GenreStateLoadedCopyWith<$Res> {
+  factory _$$GenreStateLoadedCopyWith(
+          _$GenreStateLoaded value, $Res Function(_$GenreStateLoaded) then) =
+      __$$GenreStateLoadedCopyWithImpl<$Res>;
   @useResult
   $Res call({List<TMDBGenre> tmdbGenreList});
 }
 
 /// @nodoc
-class __$$_GenreStateLoadedCopyWithImpl<$Res>
-    extends _$GenreStateCopyWithImpl<$Res, _$_GenreStateLoaded>
-    implements _$$_GenreStateLoadedCopyWith<$Res> {
-  __$$_GenreStateLoadedCopyWithImpl(
-      _$_GenreStateLoaded _value, $Res Function(_$_GenreStateLoaded) _then)
+class __$$GenreStateLoadedCopyWithImpl<$Res>
+    extends _$GenreStateCopyWithImpl<$Res, _$GenreStateLoaded>
+    implements _$$GenreStateLoadedCopyWith<$Res> {
+  __$$GenreStateLoadedCopyWithImpl(
+      _$GenreStateLoaded _value, $Res Function(_$GenreStateLoaded) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +336,7 @@ class __$$_GenreStateLoadedCopyWithImpl<$Res>
   $Res call({
     Object? tmdbGenreList = null,
   }) {
-    return _then(_$_GenreStateLoaded(
+    return _then(_$GenreStateLoaded(
       null == tmdbGenreList
           ? _value._tmdbGenreList
           : tmdbGenreList // ignore: cast_nullable_to_non_nullable
@@ -347,8 +347,8 @@ class __$$_GenreStateLoadedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GenreStateLoaded implements _GenreStateLoaded {
-  const _$_GenreStateLoaded(final List<TMDBGenre> tmdbGenreList)
+class _$GenreStateLoaded implements GenreStateLoaded {
+  const _$GenreStateLoaded(final List<TMDBGenre> tmdbGenreList)
       : _tmdbGenreList = tmdbGenreList;
 
   final List<TMDBGenre> _tmdbGenreList;
@@ -368,7 +368,7 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GenreStateLoaded &&
+            other is _$GenreStateLoaded &&
             const DeepCollectionEquality()
                 .equals(other._tmdbGenreList, _tmdbGenreList));
   }
@@ -380,8 +380,8 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GenreStateLoadedCopyWith<_$_GenreStateLoaded> get copyWith =>
-      __$$_GenreStateLoadedCopyWithImpl<_$_GenreStateLoaded>(this, _$identity);
+  _$$GenreStateLoadedCopyWith<_$GenreStateLoaded> get copyWith =>
+      __$$GenreStateLoadedCopyWithImpl<_$GenreStateLoaded>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -423,10 +423,10 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GenreStateInit value) init,
-    required TResult Function(_GenreStateLoading value) loading,
-    required TResult Function(_GenreStateLoaded value) loaded,
-    required TResult Function(_GenreStateError value) error,
+    required TResult Function(GenreStateInit value) init,
+    required TResult Function(GenreStateLoading value) loading,
+    required TResult Function(GenreStateLoaded value) loaded,
+    required TResult Function(GenreStateError value) error,
   }) {
     return loaded(this);
   }
@@ -434,10 +434,10 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GenreStateInit value)? init,
-    TResult? Function(_GenreStateLoading value)? loading,
-    TResult? Function(_GenreStateLoaded value)? loaded,
-    TResult? Function(_GenreStateError value)? error,
+    TResult? Function(GenreStateInit value)? init,
+    TResult? Function(GenreStateLoading value)? loading,
+    TResult? Function(GenreStateLoaded value)? loaded,
+    TResult? Function(GenreStateError value)? error,
   }) {
     return loaded?.call(this);
   }
@@ -445,10 +445,10 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GenreStateInit value)? init,
-    TResult Function(_GenreStateLoading value)? loading,
-    TResult Function(_GenreStateLoaded value)? loaded,
-    TResult Function(_GenreStateError value)? error,
+    TResult Function(GenreStateInit value)? init,
+    TResult Function(GenreStateLoading value)? loading,
+    TResult Function(GenreStateLoaded value)? loaded,
+    TResult Function(GenreStateError value)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -458,31 +458,31 @@ class _$_GenreStateLoaded implements _GenreStateLoaded {
   }
 }
 
-abstract class _GenreStateLoaded implements GenreState {
-  const factory _GenreStateLoaded(final List<TMDBGenre> tmdbGenreList) =
-      _$_GenreStateLoaded;
+abstract class GenreStateLoaded implements GenreState {
+  const factory GenreStateLoaded(final List<TMDBGenre> tmdbGenreList) =
+      _$GenreStateLoaded;
 
   List<TMDBGenre> get tmdbGenreList;
   @JsonKey(ignore: true)
-  _$$_GenreStateLoadedCopyWith<_$_GenreStateLoaded> get copyWith =>
+  _$$GenreStateLoadedCopyWith<_$GenreStateLoaded> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_GenreStateErrorCopyWith<$Res> {
-  factory _$$_GenreStateErrorCopyWith(
-          _$_GenreStateError value, $Res Function(_$_GenreStateError) then) =
-      __$$_GenreStateErrorCopyWithImpl<$Res>;
+abstract class _$$GenreStateErrorCopyWith<$Res> {
+  factory _$$GenreStateErrorCopyWith(
+          _$GenreStateError value, $Res Function(_$GenreStateError) then) =
+      __$$GenreStateErrorCopyWithImpl<$Res>;
   @useResult
   $Res call({String e});
 }
 
 /// @nodoc
-class __$$_GenreStateErrorCopyWithImpl<$Res>
-    extends _$GenreStateCopyWithImpl<$Res, _$_GenreStateError>
-    implements _$$_GenreStateErrorCopyWith<$Res> {
-  __$$_GenreStateErrorCopyWithImpl(
-      _$_GenreStateError _value, $Res Function(_$_GenreStateError) _then)
+class __$$GenreStateErrorCopyWithImpl<$Res>
+    extends _$GenreStateCopyWithImpl<$Res, _$GenreStateError>
+    implements _$$GenreStateErrorCopyWith<$Res> {
+  __$$GenreStateErrorCopyWithImpl(
+      _$GenreStateError _value, $Res Function(_$GenreStateError) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -490,7 +490,7 @@ class __$$_GenreStateErrorCopyWithImpl<$Res>
   $Res call({
     Object? e = null,
   }) {
-    return _then(_$_GenreStateError(
+    return _then(_$GenreStateError(
       null == e
           ? _value.e
           : e // ignore: cast_nullable_to_non_nullable
@@ -501,8 +501,8 @@ class __$$_GenreStateErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_GenreStateError implements _GenreStateError {
-  const _$_GenreStateError(this.e);
+class _$GenreStateError implements GenreStateError {
+  const _$GenreStateError(this.e);
 
   @override
   final String e;
@@ -516,7 +516,7 @@ class _$_GenreStateError implements _GenreStateError {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GenreStateError &&
+            other is _$GenreStateError &&
             (identical(other.e, e) || other.e == e));
   }
 
@@ -526,8 +526,8 @@ class _$_GenreStateError implements _GenreStateError {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GenreStateErrorCopyWith<_$_GenreStateError> get copyWith =>
-      __$$_GenreStateErrorCopyWithImpl<_$_GenreStateError>(this, _$identity);
+  _$$GenreStateErrorCopyWith<_$GenreStateError> get copyWith =>
+      __$$GenreStateErrorCopyWithImpl<_$GenreStateError>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -569,10 +569,10 @@ class _$_GenreStateError implements _GenreStateError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_GenreStateInit value) init,
-    required TResult Function(_GenreStateLoading value) loading,
-    required TResult Function(_GenreStateLoaded value) loaded,
-    required TResult Function(_GenreStateError value) error,
+    required TResult Function(GenreStateInit value) init,
+    required TResult Function(GenreStateLoading value) loading,
+    required TResult Function(GenreStateLoaded value) loaded,
+    required TResult Function(GenreStateError value) error,
   }) {
     return error(this);
   }
@@ -580,10 +580,10 @@ class _$_GenreStateError implements _GenreStateError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GenreStateInit value)? init,
-    TResult? Function(_GenreStateLoading value)? loading,
-    TResult? Function(_GenreStateLoaded value)? loaded,
-    TResult? Function(_GenreStateError value)? error,
+    TResult? Function(GenreStateInit value)? init,
+    TResult? Function(GenreStateLoading value)? loading,
+    TResult? Function(GenreStateLoaded value)? loaded,
+    TResult? Function(GenreStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -591,10 +591,10 @@ class _$_GenreStateError implements _GenreStateError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GenreStateInit value)? init,
-    TResult Function(_GenreStateLoading value)? loading,
-    TResult Function(_GenreStateLoaded value)? loaded,
-    TResult Function(_GenreStateError value)? error,
+    TResult Function(GenreStateInit value)? init,
+    TResult Function(GenreStateLoading value)? loading,
+    TResult Function(GenreStateLoaded value)? loaded,
+    TResult Function(GenreStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -604,11 +604,11 @@ class _$_GenreStateError implements _GenreStateError {
   }
 }
 
-abstract class _GenreStateError implements GenreState {
-  const factory _GenreStateError(final String e) = _$_GenreStateError;
+abstract class GenreStateError implements GenreState {
+  const factory GenreStateError(final String e) = _$GenreStateError;
 
   String get e;
   @JsonKey(ignore: true)
-  _$$_GenreStateErrorCopyWith<_$_GenreStateError> get copyWith =>
+  _$$GenreStateErrorCopyWith<_$GenreStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

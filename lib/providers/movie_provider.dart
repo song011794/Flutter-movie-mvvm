@@ -1,7 +1,12 @@
+import 'dart:ui';
+
 import 'package:movie_mvvm/models/tmdb_movie.dart';
+import 'package:movie_mvvm/providers/genre_provider.dart';
 import 'package:movie_mvvm/repository/tmdb_repository.dart';
+import 'package:movie_mvvm/states/genre_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../models/tmdb_genre.dart';
 import '../models/tmdb_movie_list.dart';
 import '../states/movie_state.dart';
 
@@ -26,6 +31,13 @@ class Movie extends _$Movie {
   }
 
   Future fetchNextPage() async {
+    final genreState = ref.watch(genreProvider('ko'));
+
+    List<TMDBGenre> genreList = switch (genreState) {
+      GenreStateLoaded(:List<TMDBGenre> tmdbGenreList) => tmdbGenreList,
+      _ => <TMDBGenre>[]
+    };
+
     if (_page >= _pageSize) {
       return;
     }
@@ -47,7 +59,20 @@ class Movie extends _$Movie {
       tmdbMovieList = tmdbMovieList.copyWith(
           results: tmdbMovieList.results
               .where((movie) => movie.posterPath != null)
-              .toList());
+              .map((movie) {
+        List<String> tempGenreList = [];
+        List<Color> tempGenreColor = [];
+
+        for (int id in movie.genreIds) {
+          for (TMDBGenre genreData in genreList) {
+            if (id == genreData.id) {
+              tempGenreList.add(genreData.name);
+              tempGenreColor.add(genreData.color);
+            }
+          }
+        }
+        return movie.copyWith(genreStrings: tempGenreList, genreColors: tempGenreColor);
+      }).toList());
 
       _pageSize = tmdbMovieList.totalPages;
 

@@ -20,8 +20,10 @@ TMDBGenre _$TMDBGenreFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TMDBGenre {
-  int? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  int get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false)
+  Color get color => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +36,8 @@ abstract class $TMDBGenreCopyWith<$Res> {
   factory $TMDBGenreCopyWith(TMDBGenre value, $Res Function(TMDBGenre) then) =
       _$TMDBGenreCopyWithImpl<$Res, TMDBGenre>;
   @useResult
-  $Res call({int? id, String? name});
+  $Res call(
+      {int id, String name, @JsonKey(includeFromJson: false) Color color});
 }
 
 /// @nodoc
@@ -50,18 +53,23 @@ class _$TMDBGenreCopyWithImpl<$Res, $Val extends TMDBGenre>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? color = null,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
+              as int,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
     ) as $Val);
   }
 }
@@ -73,7 +81,8 @@ abstract class _$$_TMDBGenreCopyWith<$Res> implements $TMDBGenreCopyWith<$Res> {
       __$$_TMDBGenreCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name});
+  $Res call(
+      {int id, String name, @JsonKey(includeFromJson: false) Color color});
 }
 
 /// @nodoc
@@ -87,18 +96,23 @@ class __$$_TMDBGenreCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? id = null,
+    Object? name = null,
+    Object? color = null,
   }) {
     return _then(_$_TMDBGenre(
-      id: freezed == id
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
-      name: freezed == name
+              as int,
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
+      color: null == color
+          ? _value.color
+          : color // ignore: cast_nullable_to_non_nullable
+              as Color,
     ));
   }
 }
@@ -106,19 +120,25 @@ class __$$_TMDBGenreCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TMDBGenre implements _TMDBGenre {
-  const _$_TMDBGenre({this.id, this.name});
+  const _$_TMDBGenre(
+      {required this.id,
+      required this.name,
+      @JsonKey(includeFromJson: false) this.color = const Color(0xFFFF9000)});
 
   factory _$_TMDBGenre.fromJson(Map<String, dynamic> json) =>
       _$$_TMDBGenreFromJson(json);
 
   @override
-  final int? id;
+  final int id;
   @override
-  final String? name;
+  final String name;
+  @override
+  @JsonKey(includeFromJson: false)
+  final Color color;
 
   @override
   String toString() {
-    return 'TMDBGenre(id: $id, name: $name)';
+    return 'TMDBGenre(id: $id, name: $name, color: $color)';
   }
 
   @override
@@ -127,12 +147,13 @@ class _$_TMDBGenre implements _TMDBGenre {
         (other.runtimeType == runtimeType &&
             other is _$_TMDBGenre &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.color, color) || other.color == color));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, id, name, color);
 
   @JsonKey(ignore: true)
   @override
@@ -149,15 +170,21 @@ class _$_TMDBGenre implements _TMDBGenre {
 }
 
 abstract class _TMDBGenre implements TMDBGenre {
-  const factory _TMDBGenre({final int? id, final String? name}) = _$_TMDBGenre;
+  const factory _TMDBGenre(
+      {required final int id,
+      required final String name,
+      @JsonKey(includeFromJson: false) final Color color}) = _$_TMDBGenre;
 
   factory _TMDBGenre.fromJson(Map<String, dynamic> json) =
       _$_TMDBGenre.fromJson;
 
   @override
-  int? get id;
+  int get id;
   @override
-  String? get name;
+  String get name;
+  @override
+  @JsonKey(includeFromJson: false)
+  Color get color;
   @override
   @JsonKey(ignore: true)
   _$$_TMDBGenreCopyWith<_$_TMDBGenre> get copyWith =>
