@@ -7,7 +7,6 @@ import 'package:movie_mvvm/providers/genre_provider.dart';
 import '../components/bottom_navigation.dart';
 import '../providers/movie_provider.dart';
 
-
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
 
@@ -45,7 +44,7 @@ class _HomePageState extends ConsumerState<HomePage> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: (index) => setState(() {
           _selectedIndex = index;
