@@ -172,24 +172,3 @@ class _TMDBRpository implements TMDBRpository {
     return requestOptions;
   }
 }
-
-// **************************************************************************
-// RiverpodGenerator
-// **************************************************************************
-
-String _$tmdbRepositoryHash() => r'9e8883b4e19c41794db3c417855bd95a05dad927';
-
-/// See also [tmdbRepository].
-@ProviderFor(tmdbRepository)
-final tmdbRepositoryProvider = AutoDisposeProvider<TMDBRpository>.internal(
-  tmdbRepository,
-  name: r'tmdbRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$tmdbRepositoryHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef TmdbRepositoryRef = AutoDisposeProviderRef<TMDBRpository>;
-// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

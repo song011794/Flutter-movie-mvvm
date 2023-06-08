@@ -14,8 +14,32 @@ class HomePage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _HomePageState();
 }
 
-class _HomePageState extends ConsumerState<HomePage> {
+class _HomePageState extends ConsumerState<HomePage>
+    with WidgetsBindingObserver {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      setState(() {
+        ref.invalidate(genreProvider);
+      });
+    }
+
+    super.didChangeAppLifecycleState(state);
+  }
 
   static const List<Widget> _widgetOptions = [
     NavigationWidget(MOVIEMODE.nowPlay),
@@ -53,7 +77,9 @@ class _HomePageState extends ConsumerState<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(genreProvider('ko'));
+    print('Device Language : ${context.deviceLocale.languageCode}');
+
+    final state = ref.watch(genreProvider);
 
     return state.maybeWhen(
       orElse: () => const CircularProgressIndicator(),

@@ -1,14 +1,16 @@
-import 'dart:ui';
-
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:movie_mvvm/models/tmdb_movie.dart';
 import 'package:movie_mvvm/providers/genre_provider.dart';
-import 'package:movie_mvvm/repository/tmdb_repository.dart';
+import 'package:movie_mvvm/providers/repository_provider.dart';
 import 'package:movie_mvvm/states/genre_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../models/tmdb_genre.dart';
 import '../models/tmdb_movie_list.dart';
 import '../states/movie_state.dart';
+import '../util/navigation_service.dart';
 
 part 'movie_provider.g.dart';
 
@@ -18,25 +20,26 @@ enum MOVIEMODE { nowPlay, popular, topRated, upComming }
 class Movie extends _$Movie {
   int _page = 0;
   int _pageSize = 1;
-  late final TMDBRpository _tmdbRpository;
+
   final List<TMDBMovie> _movies = [];
   late MOVIEMODE _mode;
+  final String _language =
+      GetIt.I<NavigationService>().getContext().deviceLocale.languageCode;
 
   @override
   MovieState build(MOVIEMODE mode) {
     _mode = mode;
-    _tmdbRpository = ref.watch(tmdbRepositoryProvider);
+
     fetchNextPage();
     return const MovieState.init();
   }
 
   Future fetchNextPage() async {
-    final genreState = ref.watch(genreProvider('ko'));
-
-    List<TMDBGenre> genreList = switch (genreState) {
-      GenreStateLoaded(:List<TMDBGenre> tmdbGenreList) => tmdbGenreList,
-      _ => <TMDBGenre>[]
-    };
+    List<TMDBGenre> genreList =
+        ref.watch(genreProvider.select((value) => switch (value) {
+              GenreStateLoaded(:List<TMDBGenre> tmdbGenreList) => tmdbGenreList,
+              _ => <TMDBGenre>[]
+            }));
 
     if (_page >= _pageSize) {
       return;
@@ -48,12 +51,13 @@ class Movie extends _$Movie {
     try {
       TMDBMovieList tmdbMovieList = switch (_mode) {
         MOVIEMODE.nowPlay =>
-          await _tmdbRpository.fetchNowPlaying('ko-KR', _page),
-        MOVIEMODE.popular => await _tmdbRpository.fetchPopular('ko-KR', _page),
+          await ref.watch(nowPlayingListProvider(_language, _page).future),
+        MOVIEMODE.popular =>
+          await ref.watch(popularListProvider(_language, _page).future),
         MOVIEMODE.topRated =>
-          await _tmdbRpository.fetchTopRated('ko-KR', _page),
+          await ref.watch(topRatedListProvider(_language, _page).future),
         MOVIEMODE.upComming =>
-          await _tmdbRpository.fetchUpComming('ko-KR', _page),
+          await ref.watch(upCommingListProvider(_language, _page).future),
       };
 
       tmdbMovieList = tmdbMovieList.copyWith(
@@ -71,7 +75,8 @@ class Movie extends _$Movie {
             }
           }
         }
-        return movie.copyWith(genreStrings: tempGenreList, genreColors: tempGenreColor);
+        return movie.copyWith(
+            genreStrings: tempGenreList, genreColors: tempGenreColor);
       }).toList());
 
       _pageSize = tmdbMovieList.totalPages;

@@ -12,7 +12,9 @@ class NavigationWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(movieProvider(_movieMode));
+    final state = ref.watch(movieProvider
+    (_movieMode)
+    );
 
     return state.when(
         init: () => const Center(child: CircularProgressIndicator()),

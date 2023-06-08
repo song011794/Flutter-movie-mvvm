@@ -3,7 +3,8 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_mvvm/pages/home_page.dart';
+import 'package:movie_mvvm/providers/router_provider.dart';
+import 'package:movie_mvvm/util/navigation_service.dart';
 
 ThemeData _theme = FlexThemeData.dark(
   scheme: FlexScheme.deepBlue,
@@ -25,19 +26,32 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  setUpLocator();
   runApp(ProviderScope(
       child: EasyLocalization(
           path: 'assets/translations',
-          supportedLocales: const [Locale('ko'), Locale('en')],
-          fallbackLocale: const Locale('ko'),
-          startLocale: const Locale('ko'),
-          child: Builder(builder: (context) {
-            return MaterialApp(
+          supportedLocales: const [Locale('ko', 'KR'), Locale('en', 'US')],
+          fallbackLocale: const Locale('ko', 'KR'),
+          child: Consumer(
+            builder: (context, ref, child) {
+              return MaterialApp.router(
                 theme: _theme,
                 darkTheme: _theme,
                 localizationsDelegates: context.localizationDelegates,
                 supportedLocales: context.supportedLocales,
-                locale: context.locale,
-                home: const HomePage());
-          }))));
+                // locale: context.locale,
+                routerConfig: ref.watch(appRouterProvider),
+              );
+            },
+          )
+
+          // return MaterialApp(
+          //     theme: _theme,
+          //     darkTheme: _theme,
+          //     localizationsDelegates: context.localizationDelegates,
+          //     supportedLocales: context.supportedLocales,
+          //     locale: context.locale,
+          //     home: const HomePage());
+          // }
+          )));
 }
