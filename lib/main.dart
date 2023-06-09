@@ -43,15 +43,5 @@ void main() async {
                 routerConfig: ref.watch(appRouterProvider),
               );
             },
-          )
-
-          // return MaterialApp(
-          //     theme: _theme,
-          //     darkTheme: _theme,
-          //     localizationsDelegates: context.localizationDelegates,
-          //     supportedLocales: context.supportedLocales,
-          //     locale: context.locale,
-          //     home: const HomePage());
-          // }
-          )));
+          ))));
 }

@@ -56,7 +56,6 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
               children: [
                 // 제목
                 Expanded(
-                    // flex: 2,
                     child: Center(
                   child: Text(
                     widget.movieList.elementAt(index).title,
@@ -96,7 +95,6 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
                 // 영화 설명
                 if (widget.movieList.elementAt(index).overview.isNotEmpty)
                   Expanded(
-                    // flex: 2,
                     child: Padding(
                       padding:
                           const EdgeInsets.only(left: 8, right: 8, bottom: 8),

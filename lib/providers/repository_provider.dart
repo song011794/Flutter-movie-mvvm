@@ -49,5 +49,3 @@ Future<TMDBGenreList> genreList(GenreListRef ref, String language) {
 
   return repository.fetchMovieGenre(language);
 }
-
-
