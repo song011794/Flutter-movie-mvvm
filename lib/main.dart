@@ -18,8 +18,6 @@ ThemeData _theme = FlexThemeData.dark(
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   useMaterial3: true,
   swapLegacyOnMaterial3: true,
-  // To use the Playground font, add GoogleFonts package and uncomment
-  // fontFamily: GoogleFonts.notoSans().fontFamily,
 );
 
 void main() async {
@@ -38,10 +36,10 @@ void main() async {
                 theme: _theme,
                 darkTheme: _theme,
                 localizationsDelegates: context.localizationDelegates,
-                supportedLocales: context.supportedLocales,
-                // locale: context.locale,
+                supportedLocales: context.supportedLocales,              
                 routerConfig: ref.watch(appRouterProvider),
               );
             },
-          ))));
+          ))
+          ));
 }

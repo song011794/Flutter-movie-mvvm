@@ -1,30 +1,99 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
+
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:movie_mvvm/models/tmdb_genre.dart';
+import 'package:movie_mvvm/models/tmdb_genre_list.dart';
+import 'package:movie_mvvm/models/tmdb_movie_list.dart';
 
-import 'package:movie_mvvm/pages/home_page.dart';
+import 'package:movie_mvvm/providers/repository_provider.dart';
 
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const HomePage());
+import 'package:movie_mvvm/repository/tmdb_repository.dart';
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+class FakeRepository implements TMDBRpository {
+  @override
+  Future<TMDBGenreList> fetchMovieGenre(String language) async {
+    return const TMDBGenreList(genres: [TMDBGenre(id: 1, name: 'action')]);
+  }
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  @override
+  Future<TMDBMovieList> fetchNowPlaying(String language, int page) {
+    // TODO: implement fetchNowPlaying
+    throw UnimplementedError();
+  }
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  @override
+  Future<TMDBMovieList> fetchPopular(String language, int page) {
+    // TODO: implement fetchPopular
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<TMDBMovieList> fetchTopRated(String language, int page) {
+    // TODO: implement fetchTopRated
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<TMDBMovieList> fetchUpComming(String language, int page) {
+    // TODO: implement fetchUpComming
+    throw UnimplementedError();
+  }
 }
+
+class GenreItem extends StatelessWidget {
+  const GenreItem({super.key, required this.genre});
+  final TMDBGenre genre;
+  @override
+  Widget build(BuildContext context) {
+    return Text(genre.name);
+  }
+}
+
+// void main() async {
+//   testWidgets('override repositoryProvider', (tester) async {
+//     await tester.pumpWidget(
+//       ProviderScope(
+//         overrides: [tmdbRepositoryProvider.overrideWithValue(FakeRepository())],
+//         child: MaterialApp(
+//           home: Scaffold(
+//             body: Consumer(builder: (context, ref, _) {
+//               final genreItem = ref.watch(genreListProvider('ko'));
+//               if (genreItem.asData == null) {
+//                 return const CircularProgressIndicator();
+//               }
+//               return ListView(
+//                 children: [
+//                   for (final genre in genreItem.asData!.value.genres)
+//                     GenreItem(genre: genre)
+//                 ],
+//               );
+//             }),
+//           ),
+//         ),
+//       ),
+//     );
+
+//     expect(find.byType(CircularProgressIndicator), findsOneWidget);
+
+//     await tester.pump();
+
+//     expect(find.byType(CircularProgressIndicator), findsNothing);
+
+//     expect(tester.widgetList(find.byType(GenreItem)), [
+//       isA<GenreItem>()
+//           .having((s) => s.genre.id, 'genre.id', 1)
+//           .having((s) => s.genre.name, 'genre.name', 'action'),
+//     ]);
+
+//     expect(tester.widgetList(find.byType(GenreItem)), [
+//       isA<GenreItem>()
+//           .having((s) => s.genre.id, 'genre.id', 2)
+//           .having((s) => s.genre.name, 'genre.name', 'action'),
+//     ]);
+//   });
+// }
+
+@GenerateMocks([])
+void main() async {}
