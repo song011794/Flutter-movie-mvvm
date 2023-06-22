@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_mvvm/models/tmdb_movie.dart';
+import 'package:movie_mvvm/data/models/tmdb_movie.dart';
 
 part 'tmdb_movie_list.freezed.dart';
 part 'tmdb_movie_list.g.dart';

@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../pages/home_page.dart';
+import '../presentation/views/home_page.dart';
 import '../util/navigation_service.dart';
 
 part 'router_provider.g.dart';

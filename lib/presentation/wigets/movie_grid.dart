@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../models/tmdb_movie.dart';
+import '../../data/models/tmdb_movie.dart';
 import '../providers/movie_provider.dart';
 
 class MovieGrid extends ConsumerStatefulWidget {
@@ -25,8 +25,9 @@ class _MovieGridState extends ConsumerState<MovieGrid> {
     scrollController.addListener(() {
       if (!loading &&
           scrollController.offset >
-              scrollController.position.maxScrollExtent * 0.8) {
+              scrollController.position.maxScrollExtent * 0.8) {       
         ref.read(movieProvider(widget.movemode).notifier).fetchNextPage();
+
         loading = true;
       }
     });

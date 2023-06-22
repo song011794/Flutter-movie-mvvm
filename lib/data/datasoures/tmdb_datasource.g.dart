@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tmdb_repository.dart';
+part of 'tmdb_datasource.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'tmdb_repository.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _TMDBRpository implements TMDBRpository {
-  _TMDBRpository(
+class _TMDBDataSource implements TMDBDataSource {
+  _TMDBDataSource(
     this._dio, {
     this.baseUrl,
   }) {

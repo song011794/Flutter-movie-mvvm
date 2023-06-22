@@ -3,8 +3,9 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_mvvm/providers/router_provider.dart';
 import 'package:movie_mvvm/util/navigation_service.dart';
+
+import 'core/router_provider.dart';
 
 ThemeData _theme = FlexThemeData.dark(
   scheme: FlexScheme.deepBlue,

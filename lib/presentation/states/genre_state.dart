@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:movie_mvvm/models/tmdb_genre.dart';
+import 'package:movie_mvvm/data/models/tmdb_genre.dart';
 
 part 'genre_state.freezed.dart';
 

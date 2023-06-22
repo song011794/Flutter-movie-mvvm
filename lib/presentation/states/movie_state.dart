@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../models/tmdb_movie.dart';
+import '../../data/models/tmdb_movie.dart';
 
 part 'movie_state.freezed.dart';
 

@@ -1,42 +1,48 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
-import 'package:movie_mvvm/models/tmdb_movie.dart';
-import 'package:movie_mvvm/providers/genre_provider.dart';
-import 'package:movie_mvvm/providers/repository_provider.dart';
-import 'package:movie_mvvm/states/genre_state.dart';
+import 'package:movie_mvvm/data/models/tmdb_movie.dart';
+import 'package:movie_mvvm/presentation/providers/genre_provider.dart';
+
+import 'package:movie_mvvm/presentation/states/genre_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../models/tmdb_genre.dart';
-import '../models/tmdb_movie_list.dart';
+import '../../data/models/tmdb_genre.dart';
+import '../../data/models/tmdb_movie_list.dart';
+import '../../data/repositories/tmdb_repository_impl.dart';
+import '../../domain/repositories/tmdb_repository.dart';
 import '../states/movie_state.dart';
-import '../util/navigation_service.dart';
-
-part 'movie_provider.g.dart';
+import '../../util/navigation_service.dart';
 
 enum MOVIEMODE { nowPlay, popular, topRated, upComming }
 
-@riverpod
-class Movie extends _$Movie {
+final movieProvider =
+    StateNotifierProvider.family<Movie, MovieState, MOVIEMODE>(
+        (ref, movieMode) => Movie(ref, movieMode));
+
+class Movie extends StateNotifier<MovieState> {
+  Movie(this._ref, this._mode) : super(const MovieState.init()) {
+    fetchNextPage();
+  }
+
+  final MOVIEMODE _mode;
+  final Ref _ref;
+
+  late final TmdbRepository _repository = _ref.watch(tmdbRepositoryProvider);
+
   int _page = 0;
   int _pageSize = 1;
 
   final List<TMDBMovie> _movies = [];
-  late MOVIEMODE _mode;
-  final String _language =
-      GetIt.I<NavigationService>().getContext().deviceLocale.languageCode;
 
-  @override
-  MovieState build(MOVIEMODE mode) {
-    _mode = mode;
-
-    fetchNextPage();
-    return const MovieState.init();
-  }
 
   Future fetchNextPage() async {
+    final String language =
+        GetIt.I<NavigationService>().getContext().deviceLocale.languageCode;
+
     List<TMDBGenre> genreList =
-        ref.watch(genreProvider.select((value) => switch (value) {
+        _ref.watch(genreProvider.select((value) => switch (value) {
               GenreStateLoaded(:List<TMDBGenre> tmdbGenreList) => tmdbGenreList,
               _ => <TMDBGenre>[]
             }));
@@ -50,14 +56,11 @@ class Movie extends _$Movie {
 
     try {
       TMDBMovieList tmdbMovieList = switch (_mode) {
-        MOVIEMODE.nowPlay =>
-          await ref.watch(nowPlayingListProvider(_language, _page).future),
-        MOVIEMODE.popular =>
-          await ref.watch(popularListProvider(_language, _page).future),
-        MOVIEMODE.topRated =>
-          await ref.watch(topRatedListProvider(_language, _page).future),
+        MOVIEMODE.nowPlay => await _repository.fetchNowPlaying(language, _page),
+        MOVIEMODE.popular => await _repository.fetchPopular(language, _page),
+        MOVIEMODE.topRated => await _repository.fetchTopRated(language, _page),
         MOVIEMODE.upComming =>
-          await ref.watch(upCommingListProvider(_language, _page).future),
+          await _repository.fetchUpComming(language, _page),
       };
 
       tmdbMovieList = tmdbMovieList.copyWith(

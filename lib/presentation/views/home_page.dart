@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movie_mvvm/providers/genre_provider.dart';
 
-import '../components/bottom_navigation.dart';
+import '../providers/genre_provider.dart';
 import '../providers/movie_provider.dart';
+import '../wigets/bottom_navigation.dart';
+
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -34,7 +35,8 @@ class _HomePageState extends ConsumerState<HomePage>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       setState(() {
-        ref.invalidate(genreProvider);
+        // ref.invalidate(genreProvider);
+        // ref.invalidate(genre2Provider);
       });
     }
 
@@ -79,7 +81,7 @@ class _HomePageState extends ConsumerState<HomePage>
   Widget build(BuildContext context) {
     print('Device Language : ${context.deviceLocale.languageCode}');
 
-    final state = ref.watch(genreProvider);
+    final state = ref.watch(genreProvider);    
 
     return state.maybeWhen(
       orElse: () => const CircularProgressIndicator(),
