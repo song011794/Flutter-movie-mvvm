@@ -5,9 +5,6 @@ MVVM 패턴을 적용한 영화 소개 프로젝트입니다.
 # State Management
 
 - [x] Riverpod
-- [ ] Bloc
-- [ ] Provider
-- [ ] GetX
 
 # Test
 
