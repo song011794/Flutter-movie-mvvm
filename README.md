@@ -9,10 +9,6 @@ MVVM 패턴을 적용한 영화 소개 프로젝트입니다.
 # Test
 
 - [ ] UI
-- [ ] Riverpod
-- [ ] Bloc
-- [ ] Provider
-- [ ] GetX
 
 # API Key
 
