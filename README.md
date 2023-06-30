@@ -1,4 +1,4 @@
-# Movie MVVM Patern
+# 영화 뭐 보지
 
 MVVM 패턴을 적용한 영화 소개 프로젝트입니다.
 
